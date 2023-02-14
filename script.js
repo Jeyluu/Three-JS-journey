@@ -1,4 +1,3 @@
-console.log('THREE', THREE)
 //Creation de la scene
 const scene = new THREE.Scene()
 
@@ -22,7 +21,21 @@ const sizes = {
 
 //camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+// position de la camera qui nous permet de voir l'object
+camera.position.z = 3
 
 scene.add(camera)
 
-console.log('La scene', scene)
+
+//canvas
+const canvas = document.querySelector('canvas.webgl')
+
+//rendering scene
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas
+})
+// on met une taille à notre canvas
+renderer.setSize(sizes.width, sizes.height)
+
+// on voit le canvas mais pas la forme
+renderer.render(scene, camera)
